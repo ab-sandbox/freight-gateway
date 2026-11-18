@@ -19,4 +19,8 @@ COPY --from=builder /opt/mule /opt/mule
 
 WORKDIR /opt/mule
 
+RUN rm -rf /opt/mule/apps/default
+
+COPY src/main/app/ /opt/mule/apps/freight-integration/
+
 CMD ["/opt/mule/bin/mule", "console"]
