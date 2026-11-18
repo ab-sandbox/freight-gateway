@@ -1,0 +1,9 @@
+name: freight-gateway
+
+services:
+  mule:
+    build:
+      context: ../freight-integration
+    container_name: freight-mule
+    restart: "no"
+    stop_grace_period: 30s
