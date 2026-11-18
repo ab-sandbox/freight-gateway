@@ -1,9 +1,22 @@
 name: freight-gateway
 
 services:
+  activemq:
+    image: apache/activemq-classic:5.18.4
+    container_name: freight-activemq
+    restart: "no"
+    ports:
+      - "127.0.0.1:8161:8161"
+      - "127.0.0.1:61616:61616"
+    volumes:
+      - activemq-data:/opt/apache-activemq/data
+
   mule:
     build:
       context: ../freight-integration
     container_name: freight-mule
     restart: "no"
     stop_grace_period: 30s
+
+volumes:
+  activemq-data:
